@@ -1,4 +1,41 @@
 <html>
 <head></head>
-<body>Test</body>
+<body>
+<style media="screen">
+html {
+display: table;
+margin: auto;
+}
+h1 {
+    text-align: center;
+}
+body {
+    padding-top: 10;
+display: table-cell;
+vertical-align: middle;
+}
+</style>
+    <script type="text/javascript" src="js/haar-detector.js"></script>
+    <script type="text/javascript" src="js/smile-detector.js"></script>
+
+    <video id="vid" height="426" width="640" autoplay>Smile</video>
+    <h1 id="smile"></h1>
+
+    <script type="text/javascript">
+    var cb = function(isSmile){
+if (isSmile){
+    console.log("Smile")
+    document.getElementById("smile").innerHTML = "";
+
+}
+else{
+    document.getElementById("smile").innerHTML = "Why so serious?!";
+}
+}
+var sd = new SmileDetector("vid");
+sd.onSmile(cb);
+sd.start(300);
+
+    </script>
+</body>
 </html>
